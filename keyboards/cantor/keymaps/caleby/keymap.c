@@ -26,6 +26,7 @@ typedef enum {
     CMB_8,
     CMB_9,
     CMB_0,
+    CMB_GRV,
     CMB_LEN,
 } cantor_combo_t;
 
@@ -40,6 +41,7 @@ typedef enum {
     CMB_SH_8,
     CMB_SH_9,
     CMB_SH_0,
+    CMB_SH_GRV,
     CMB_SH_LEN,
 } cantor_comboshift_t;
 
@@ -64,22 +66,25 @@ const uint16_t PROGMEM combos3[CMB_LEN][3] = {
     [CMB_8]        = {KC_SPC, KC_I, COMBO_END},
     [CMB_9]        = {KC_SPC, KC_O, COMBO_END},
     [CMB_0]        = {KC_SPC, KC_P, COMBO_END},
+    [CMB_GRV]        = {KC_SPC, KC_TAB, COMBO_END},
 };
 
 const uint16_t PROGMEM combos4[CMB_SH_LEN][4] = {
-    [CMB_SH_1]      = {KC_SPC, SC_LSPO, KC_Q, COMBO_END},
-    [CMB_SH_2]      = {KC_SPC, SC_LSPO, KC_W, COMBO_END},
-    [CMB_SH_3]      = {KC_SPC, SC_LSPO, KC_E, COMBO_END},
-    [CMB_SH_4]      = {KC_SPC, SC_LSPO, KC_R, COMBO_END},
-    [CMB_SH_5]      = {KC_SPC, SC_LSPO, KC_T, COMBO_END},
-    [CMB_SH_6]      = {KC_SPC, SC_LSPO, KC_Y, COMBO_END},
-    [CMB_SH_7]      = {KC_SPC, SC_LSPO, KC_U, COMBO_END},
-    [CMB_SH_8]      = {KC_SPC, SC_LSPO, KC_I, COMBO_END},
-    [CMB_SH_9]      = {KC_SPC, SC_LSPO, KC_O, COMBO_END},
-    [CMB_SH_0]      = {KC_SPC, SC_LSPO, KC_P, COMBO_END},
+    [CMB_SH_1 - CMB_LEN]      = {KC_SPC, SC_LSPO, KC_Q, COMBO_END},
+    [CMB_SH_2 - CMB_LEN]      = {KC_SPC, SC_LSPO, KC_W, COMBO_END},
+    [CMB_SH_3 - CMB_LEN]      = {KC_SPC, SC_LSPO, KC_E, COMBO_END},
+    [CMB_SH_4 - CMB_LEN]      = {KC_SPC, SC_LSPO, KC_R, COMBO_END},
+    [CMB_SH_5 - CMB_LEN]      = {KC_SPC, SC_LSPO, KC_T, COMBO_END},
+    [CMB_SH_6 - CMB_LEN]      = {KC_SPC, SC_LSPO, KC_Y, COMBO_END},
+    [CMB_SH_7 - CMB_LEN]      = {KC_SPC, SC_LSPO, KC_U, COMBO_END},
+    [CMB_SH_8 - CMB_LEN]      = {KC_SPC, SC_LSPO, KC_I, COMBO_END},
+    [CMB_SH_9 - CMB_LEN]      = {KC_SPC, SC_LSPO, KC_O, COMBO_END},
+    [CMB_SH_0 - CMB_LEN]      = {KC_SPC, SC_LSPO, KC_P, COMBO_END},
+    [CMB_SH_GRV - CMB_LEN]      = {KC_SPC, SC_LSPO, KC_TAB, COMBO_END},
 
 };
 
+// TODO: GRV combos
 combo_t key_combos[] = {
     [CMB_CURL_OPEN] = COMBO(combos3[CMB_CURL_OPEN], S(KC_LBRC)),
     [CMB_SQ_OPEN] = COMBO(combos3[CMB_SQ_OPEN], KC_LBRC),
@@ -100,6 +105,7 @@ combo_t key_combos[] = {
     [CMB_8] = COMBO(combos3[CMB_8], KC_8),
     [CMB_9] = COMBO(combos3[CMB_9], KC_9),
     [CMB_0] = COMBO(combos3[CMB_0], KC_0),
+    [CMB_GRV] = COMBO(combos3[CMB_GRV], KC_GRV),
     [CMB_SH_1] = COMBO(combos4[CMB_SH_1], S(KC_1)),
     [CMB_SH_2] = COMBO(combos4[CMB_SH_2], S(KC_2)),
     [CMB_SH_3] = COMBO(combos4[CMB_SH_3], S(KC_3)),
@@ -110,6 +116,7 @@ combo_t key_combos[] = {
     [CMB_SH_8] = COMBO(combos4[CMB_SH_8], S(KC_8)),
     [CMB_SH_9] = COMBO(combos4[CMB_SH_9], S(KC_9)),
     [CMB_SH_0] = COMBO(combos4[CMB_SH_0], S(KC_0)),
+    [CMB_SH_GRV] = COMBO(combos4[CMB_SH_GRV], S(KC_GRV)),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -128,10 +135,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                       └───┘   └───┘
      */
     [0] = LAYOUT_split_3x6_3(
-    KC_TAB,   KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,            KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,    KC_DEL,
+    KC_TAB,   KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,            KC_Y,   KC_U,   KC_I,   KC_O,   KC_P,    KC_BSLS,
     KC_LALT,  KC_A,   KC_S,   KC_D,   KC_F,   KC_G,            KC_H,   KC_J,   KC_K,   KC_L,   KC_SCLN, KC_QUOT,
     SC_LSPO,  KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,            KC_N,   KC_M,   KC_COMM,KC_DOT, KC_SLSH, SC_RSPC,
-                      KC_NO,   KC_ESC,  LCTL_T(KC_BSPC),      KC_SPC,    KC_ENT,   KC_BSLS
+                      KC_DEL,   KC_ESC,  LCTL_T(KC_BSPC),      KC_SPC,    KC_ENT, KC_NO
     ),
 
     /*
@@ -149,10 +156,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                       └───┘   └───┘
      */
     [1] = LAYOUT_split_3x6_3(
-    KC_GRV,   KC_1,   KC_2,   KC_3,   KC_4,   KC_5,            KC_6,   KC_7,   KC_8,   KC_9,   KC_0,    KC_DEL,
+    KC_GRV,   KC_1,   KC_2,   KC_3,   KC_4,   KC_5,            KC_6,   KC_7,   KC_8,   KC_9,   KC_0,    KC_BSLS,
     KC_NO,    TO(1),  TO(2),  KC_NO,  S(KC_LBRC),KC_LBRC,  KC_RBRC, S(KC_RBRC),KC_MINS,KC_EQL, KC_LBRC, KC_RBRC,
     KC_LSFT,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,           KC_NO,S(KC_MINS),KC_COMM,KC_DOT,KC_SLSH, KC_RSFT,
-                                    KC_NO, TO(0), KC_BSPC, KC_SPC, KC_ENT, KC_BSLS
+                                    KC_DEL, TO(0), KC_BSPC, KC_SPC, KC_ENT, KC_NO
     ),
 
     [2] = LAYOUT_split_3x6_3(
